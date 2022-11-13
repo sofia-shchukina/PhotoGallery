@@ -1,10 +1,17 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+export default function App() {
+
+  const [message, setMessage] = useState();
+
+  axios.get("/hello")
+      .then((response) => response.data)
+      .then(setMessage)
+
   return (
-   <h1>hi</h1>
+   <h1>{message}</h1>
   );
 }
 
-export default App;

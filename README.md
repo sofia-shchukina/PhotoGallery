@@ -1,1 +1,1 @@
-# CoseeProject
+# PhotoGallery

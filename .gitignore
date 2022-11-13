@@ -3,3 +3,4 @@
 /backend/mvnw.cmd
 /backend/.mvn
 */*.iml
+/backend/target

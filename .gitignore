@@ -4,3 +4,4 @@
 /backend/.mvn
 */*.iml
 /backend/target
+/frontend/node_modules

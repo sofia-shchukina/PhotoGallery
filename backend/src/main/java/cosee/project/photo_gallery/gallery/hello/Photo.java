@@ -1,4 +1,6 @@
 package cosee.project.photo_gallery.gallery.hello;
 
-public record Photo(String secure_url) {
+import org.springframework.data.annotation.Id;
+
+public record Photo(@Id String secure_url) {
 }

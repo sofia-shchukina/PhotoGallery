@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Photo} from "./Photo";
 
+
 export default function App() {
 
    const [photo, setPhoto] = useState<Photo>();
@@ -17,10 +18,12 @@ export default function App() {
                 formData)
                 .then((response) => {
                     setPhoto( response.data)
-                });
-            return axios.post("/photo", photo);
+                })
+            .then(savePhotoToDatabase);
     };
-
+const savePhotoToDatabase = () => {
+        return axios.post("/photo", photo)
+    };
 
   return (
       <>

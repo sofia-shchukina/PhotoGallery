@@ -44,16 +44,20 @@ export default function App() {
             .then(response => response.data)
             .then(setPhotos)
     }
-
+const onTagAdd = (tag: string) => {
+    setTags([...tags, tag]);
+    setTag("");
+}
     return (<>
         <input type="file"
                onChange={(event) => { // @ts-ignore
                    setImageSelected(event.target.files[0]);
                }}/>
-        <input type="text"
-               onChange= {event => setTag(event.target.value)}
+        <input type="text" value={tag}
+               onChange={event => setTag(event.target.value)}
         />
-        <button onClick={() => setTags([...tags,tag])}>Add tag</button>
+        {tags}
+        <button type="submit" onClick={()=> onTagAdd(tag)}>Add tag</button>
         <button onClick={uploadImage}>Upload image</button>
         <PhotoGallery photos={photos}/>
     </>)

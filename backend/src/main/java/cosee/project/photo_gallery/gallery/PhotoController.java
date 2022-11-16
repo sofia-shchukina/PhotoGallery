@@ -1,4 +1,4 @@
-package cosee.project.photo_gallery.gallery.hello;
+package cosee.project.photo_gallery.gallery;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

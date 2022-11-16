@@ -8,7 +8,7 @@ export default function PhotoGallery(props:
                                              }) {
 
         return (
-                <ul>
+                <ul className="gallery">
                     {props.photos.map(photo =>
                         <EachPhoto key={photo.secure_url}
                                    secure_url={photo.secure_url}/>)}

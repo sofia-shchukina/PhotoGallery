@@ -1,0 +1,7 @@
+img{
+    filter: grayscale(1) brightness(40%);
+    max-height: 300px;
+}
+img:hover{
+    filter: none;
+ }

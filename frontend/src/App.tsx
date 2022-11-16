@@ -31,7 +31,8 @@ export default function App() {
         axios.post("https://api.cloudinary.com/v1_1/day8bokpg/image/upload",
             formData)
             .then(response => response.data)
-            .then(setPhoto);
+            .then(setPhoto)
+        setTags([]);
     };
 
     useEffect(() => {
@@ -44,10 +45,10 @@ export default function App() {
             .then(response => response.data)
             .then(setPhotos)
     }
-const onTagAdd = (tag: string) => {
-    setTags([...tags, tag]);
-    setTag("");
-}
+    const onTagAdd = (tag: string) => {
+        setTags([...tags, tag]);
+        setTag("");
+    }
     return (<>
         <input type="file"
                onChange={(event) => { // @ts-ignore
@@ -56,8 +57,8 @@ const onTagAdd = (tag: string) => {
         <input type="text" value={tag}
                onChange={event => setTag(event.target.value)}
         />
-        {tags}
-        <button type="submit" onClick={()=> onTagAdd(tag)}>Add tag</button>
+        {tags.join(", ")}
+        <button type="submit" onClick={() => onTagAdd(tag)}>Add tag</button>
         <button onClick={uploadImage}>Upload image</button>
         <PhotoGallery photos={photos}/>
     </>)

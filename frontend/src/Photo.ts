@@ -1,3 +1,4 @@
 export type Photo = {
-    secure_url : string
+    secure_url : string,
+    tags:string[]
 }

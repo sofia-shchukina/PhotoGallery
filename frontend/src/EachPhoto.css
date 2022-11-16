@@ -1,7 +1,19 @@
 img{
-    filter: grayscale(1) brightness(40%);
+    filter: grayscale(1) brightness(80%);
     max-height: 300px;
 }
 img:hover{
     filter: none;
+    max-height: 350px;
  }
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}

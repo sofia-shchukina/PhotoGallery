@@ -9,9 +9,11 @@ export default function App() {
 
     const [photo, setPhoto] = useState<Photo>();
     const [imageSelected, setImageSelected] = useState("");
+    const [tags, setTags] = useState<string[]>([]);
+    const [tag, setTag] = useState<string>("");
 
     useEffect(() => {
-        savePhotoToDatabase()
+        savePhotoToDatabase();
     }, [photo])
 
     const savePhotoToDatabase = () => {
@@ -22,6 +24,9 @@ export default function App() {
     const uploadImage = () => {
         const formData = new FormData();
         formData.append("file", imageSelected);
+        for (let i = 0; i < tags.length; i++) {
+            formData.append('tags[]', tags[i]);
+        }
         formData.append("upload_preset", "tutfko7a");
         axios.post("https://api.cloudinary.com/v1_1/day8bokpg/image/upload",
             formData)
@@ -39,15 +44,17 @@ export default function App() {
             .then(response => response.data)
             .then(setPhotos)
     }
-    return (
-        <>
-            <input type="file"
-                   onChange={(event) => { // @ts-ignore
-                       setImageSelected(event.target.files[0]);
-                   }}/>
-            <button onClick={uploadImage}>Upload image</button>
-            <PhotoGallery photos={photos}/>
-        </>
-    );
-}
 
+    return (<>
+        <input type="file"
+               onChange={(event) => { // @ts-ignore
+                   setImageSelected(event.target.files[0]);
+               }}/>
+        <input type="text"
+               onChange= {event => setTag(event.target.value)}
+        />
+        <button onClick={() => setTags([...tags,tag])}>Add tag</button>
+        <button onClick={uploadImage}>Upload image</button>
+        <PhotoGallery photos={photos}/>
+    </>)
+}

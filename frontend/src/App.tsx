@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Photo} from "./Photo";
-import PhotoGallery from "./PhotoGallery";
+import PhotoGallery from "./Components/PhotoGallery";
+import {Button, TextField} from "@mui/material";
 
 
 export default function App() {
@@ -50,16 +51,21 @@ export default function App() {
         setTag("");
     }
     return (<>
-        <input type="file"
+        <section className="inputsAndButtons">
+        <TextField type="file" variant="outlined"
                onChange={(event) => { // @ts-ignore
                    setImageSelected(event.target.files[0]);
                }}/>
-        <input type="text" value={tag}
+        <TextField type="text" value={tag} label="tags" variant="outlined"
                onChange={event => setTag(event.target.value)}
         />
         {tags.join(", ")}
-        <button type="submit" onClick={() => onTagAdd(tag)}>Add tag</button>
-        <button onClick={uploadImage}>Upload image</button>
+        <Button variant="contained" type="submit" onClick={() => onTagAdd(tag)}>Add tag</Button>
+        <Button variant="contained" component="label" onClick={uploadImage}>
+            Upload image
+        </Button>
+    </section>
         <PhotoGallery photos={photos}/>
-    </>)
+        </>
+    )
 }

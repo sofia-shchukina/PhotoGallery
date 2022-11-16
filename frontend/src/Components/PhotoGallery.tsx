@@ -1,5 +1,5 @@
 import EachPhoto from "./EachPhoto";
-import {Photo} from "./Photo";
+import {Photo} from "../Photo";
 import './PhotoGallery.css';
 
 export default function PhotoGallery(props:
